@@ -1,0 +1,10 @@
+CREATE TABLE sudan_grocery_items (
+    id INT PRIMARY KEY,
+    category VARCHAR(50),
+    brand_name VARCHAR(100),
+    product_name VARCHAR(100),
+    company VARCHAR(100),
+    price DECIMAL(10,2),
+    currency VARCHAR(10)
+);
+
