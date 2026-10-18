@@ -1,0 +1,17 @@
+
+<?php
+// Include the PDO database connection.
+require_once('gomezConfig.php');
+
+// Prepare a query to delete the item with id = 25.
+$query = "DELETE FROM sudan_grocery_items WHERE id = ?";
+
+$stmt = $pdo->prepare($query);
+
+// Execute the query using the id.
+if ($stmt->execute([25])) {
+    echo "Delete successful!";
+} else {
+    echo "Query failed.";
+}
+?>
