@@ -1,0 +1,21 @@
+
+<?php
+// Include the PDO database connection.
+require_once('gomezConfig.php');
+
+// Prepare a query to select.
+$query = "SELECT * FROM sudan_grocery_items WHERE id = 17";
+$stmt = $pdo->prepare($query);
+
+// Execute the prepared SQL statement.
+if ($stmt->execute()) {
+
+    // Retrieve only the first matching row.
+    $result = $stmt->fetch();
+
+    // Display the result.
+    echo "<pre>";
+    print_r($result);
+    echo "</pre>";
+}
+?>
