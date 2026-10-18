@@ -1,0 +1,62 @@
+
+<?php
+// Include the PDO database connection.
+require_once('gomezConfig.php');
+
+// Prepare an SQL query to retrieve all students.
+$query = "SELECT * FROM sudan_grocery_items";
+$stmt = $pdo->prepare($query);
+
+// Execute the prepared statement.
+$stmt->execute();
+
+// Retrieve all items
+$items = $stmt->fetchAll();
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sudan Grocery Items</title>
+</head>
+<body>
+
+    <h2>Sudan Grocery Items</h2>
+
+    <!-- Create the HTML table -->
+    <table border="1" cellpadding="8">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>category</th>
+                <th>brand_name</th>
+                <th>product_name</th>
+                <th>company</th>
+                <th>price</th>
+                <th>currency</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <?php
+            // checks every item record.
+            foreach ($items as $items) {
+            ?>
+                <tr>
+                    <!-- Display each student's information. -->
+                    <td><?= htmlspecialchars($items['id']) ?></td>
+                    <td><?= htmlspecialchars($items['category']) ?></td>
+                    <td><?= htmlspecialchars($items['brand_name']) ?></td>
+                    <td><?= htmlspecialchars($items['product_name']) ?></td>
+                    <td><?= htmlspecialchars($items['company']) ?></td>
+                    <td><?= htmlspecialchars($items['price']) ?></td>
+                     <td><?= htmlspecialchars($items['currency']) ?></td>
+                </tr>
+            <?php
+            }
+            ?>
+        </tbody>
+    </table>
+
+</body>
+</html>
