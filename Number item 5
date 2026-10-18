@@ -1,0 +1,22 @@
+
+<?php
+// Include the PDO database connection.
+require_once('gomezConfig.php');
+
+// Prepare an SQL query to select all grocery items.
+$query = "SELECT * FROM sudan_grocery_items";
+$stmt = $pdo->prepare($query);
+
+// Execute the prepared SQL statement.
+if ($stmt->execute()) {
+
+    // Retrieve all rows from the result set.
+    $all = $stmt->fetchAll();
+
+    // Display the results in a readable format.
+    echo "<pre>";
+    print_r($all);
+    echo "</pre>";
+}
+?>
+    
