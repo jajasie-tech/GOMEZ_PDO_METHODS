@@ -1,0 +1,29 @@
+
+<?php
+// Include the PDO database connection.
+require_once('gomezConfig.php');
+
+// Prepare an SQL query to insert a new item.
+$query = "INSERT INTO sudan_grocery_items
+          (id, category, brand_name, product_name, company, price, currency)
+          VALUES (?, ?, ?, ?, ?, ?,? )";
+
+$stmt = $pdo->prepare($query);
+
+// Supply values in the same order as the placeholders.- gawa-gawa lang po yung details nito.
+$values = [
+    1001,
+    'snacks',
+    'rio',
+    'chips_sample',
+    'dal_food',
+    1200.00, 'SDG'
+];
+
+// Execute the query with the set values.
+if ($stmt->execute($values)) {
+    echo "Query successful!";
+} else {
+    echo "Query failed.";
+}
+?>
