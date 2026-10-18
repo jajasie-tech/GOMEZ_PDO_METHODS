@@ -1,0 +1,22 @@
+
+<?php
+// Include the PDO database connection.
+require_once('gomezConfig.php');
+
+// Prepare a query to update the grocery item's price.
+$query = "UPDATE sudan_grocery_items
+          SET product_name = ?, price = ?
+          WHERE id = ?";
+
+$stmt = $pdo->prepare($query);
+
+// Specify the item name, price, and ID
+$values = ['dalandan_soda', 1500.00, 18];
+
+// Execute the update query.
+if ($stmt->execute($values)) {
+    echo "Update successful!";
+} else {
+    echo "Query failed.";
+}
+?>
